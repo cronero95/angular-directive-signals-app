@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { User } from '../../interfaces/user-request.interface';
 
 @Component({
@@ -6,6 +6,8 @@ import { User } from '../../interfaces/user-request.interface';
   styleUrl: './properties-page.component.css'
 })
 export class PropertiesPageComponent {
+
+  public counter = signal(10);
 
   public user = signal<User>({
     id: 2,
@@ -17,6 +19,12 @@ export class PropertiesPageComponent {
 
   public fullName = computed<string>(() => {
     return `${this.user().first_name} ${this.user().last_name}`;
+  });
+
+  public userChangeEffect = effect(() => {
+
+    console.log(`${this.user().first_name} - ${this.counter()}`);
+
   });
 
   onFielUpdated(field: keyof User, value: string): void {
@@ -50,7 +58,7 @@ export class PropertiesPageComponent {
 
       }
 
-      return current;
+      return {...current};
     })
   }
 
