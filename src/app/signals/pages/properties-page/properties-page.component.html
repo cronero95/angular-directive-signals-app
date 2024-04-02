@@ -1,1 +1,33 @@
-<p>properties-page works!</p>
+<h2>Mutations</h2>
+<hr>
+
+<div class="row">
+  <div class="col-6">
+
+    <input
+      #txtEmail
+      type="text"
+      class="form-control mb-2"
+      (input)="onFielUpdated('email', txtEmail.value)"
+    >
+
+    <input
+      #txtFirstName
+      type="text"
+      class="form-control mb-2"
+      (input)="onFielUpdated('first_name', txtFirstName.value)"
+    >
+
+    <input
+      #txtLastName
+      type="text"
+      class="form-control mb-2"
+      (input)="onFielUpdated('last_name', txtLastName.value)"
+    >
+
+  </div>
+
+  <div class="col-6">
+
+  </div>
+</div>
